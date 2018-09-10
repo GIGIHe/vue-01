@@ -1,0 +1,13 @@
+<div id="app">
+    <div v-html='msg'></div>
+</div>
+<script src="./vue.js"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            msg:`<h1>我是一个好孩子</h1>`
+        }
+    })
+</script>
+<h3>这种方法能够直接插入一个DOM节点</h3>

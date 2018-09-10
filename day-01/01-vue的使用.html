@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model ='msg'>
+    <!-- //插值法 -->
+    <h2>{{msg}}</h2>
+</div>
+    
+</body>
+<script src="./vue.js"></script>
+<!-- <script src="https://vuejs.org/js/vue.js"></script> -->
+
+<script>
+    // 通过vue函数创建一个vue实例
+const app = new Vue({
+    el:'#app',
+    data:{
+        msg:'hello,vue'
+    }
+})
+</script>
+</html>

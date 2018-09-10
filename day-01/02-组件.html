@@ -1,0 +1,45 @@
+<style>
+    .my-btn {
+    width: 100px;
+    height: 50px;
+    border-radius: 4px;
+    background: #409eff;
+    color: #ffffff;
+    line-height: 50px;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.my-btn:active {
+    background: #3a8ee6;
+}
+
+</style>
+<div id="app">
+    <my-btn>1234</my-btn>
+</div>
+
+<script src="./vue.js"></script>
+<script>
+    
+    //声明一个组件
+    const myBtn = {
+    template:`
+    <button class="my-btn"><slot></slot></button>
+    `
+    }
+    //全局注册声明的组件
+    Vue.component('my-btn',myBtn)
+    //为什么实例化要放到最后呢
+    // 实例化vue
+    const vm = new Vue({
+        el:'#app'
+    })
+</script>
+
+
+
+
+
+<h3>组件能够方便的修改需求,所以使用组件</h3>

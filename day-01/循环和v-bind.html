@@ -1,0 +1,46 @@
+<style>
+    .done {
+        width: 60px;
+        border: 1px solid rebeccapurple
+    }
+</style>
+<div id="app">
+    <ul>
+        <li v-for='(item,index) in arr' v-bind:class="{done:item.isDone}" @click='toggle(index)'>
+            {{index}} {{item.name}}
+        </li>
+    </ul>
+    <input type="checkbox" v-bind:checked='isShow'>
+</div>
+
+<script src="./vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            isShow:false,
+            arr: [
+                {
+                    name: 'andy',
+                    isDone: false
+                },
+                {
+                    name: 'tom',
+                    isDone: true
+                },
+                {
+                    name: 'eve',
+                    isDone: true
+                }
+            ]
+        },
+        methods: {
+            toggle(index) {
+                this.arr[index].isDone = !this.arr[index].isDone
+            }
+
+
+        }
+    })
+</script>
+<h3>v-bind不仅仅可以绑定类名，还可以绑定属性</h3>

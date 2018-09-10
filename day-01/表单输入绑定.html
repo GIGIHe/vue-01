@@ -1,0 +1,25 @@
+
+ <div id="app">
+     <!-- 绑定监听表单输入的元素 v-model-->
+     <p><input type="text" v-model='username'></p>
+     <p><input type="text" v-model='password'></p>
+     <button @click='showForm'>弹出用户名和密码框</button>
+ </div>
+<script src="./vue.js"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            username:'',
+            password:''
+        },
+        methods:{
+            showForm(){
+                let up = `用户名：${this.username}密码：${this.password}`
+                // alert(this.username);
+                // alert(this.password)
+                alert(up)
+            }
+        }
+    })
+</script>

@@ -1,0 +1,39 @@
+<div id="app">
+    <p><input type="text" v-model='username'></p>
+    <p><input type="text" v-model='content'></p>
+    <!-- 这不就是插值法吗 -->
+<!-- <h3>您的简单资料为{{this.username+this.content}}</h3>     -->
+<!-- <h3>您的简单资料为{{introduce}}</h3>     -->
+<h3>您的简单资料为{{totalContent}}</h3>    
+<script src="./vue.js"></script>
+
+
+<script>
+    // 通过vue函数创建一个vue实例
+const app = new Vue({
+    el:'#app',
+    data:{
+      username:'',
+      content:'',
+      introduce:'',
+   
+    },
+    // watch监听单一属性的变化并赋值
+    // watch:{
+    //     username(newValue,oldValue){
+    //         this.introduce = newValue + this.content
+    //     },
+    //     content(newValue,oldValue){
+    //    this.introduce= this.username+newValue
+    //     }
+        
+    // }
+    // 监听多个属性的变化并拼接
+    computed:{
+        totalContent(){
+            return this.username+this.content
+        }
+    }
+})
+</script>
+<h4>计算属性是什么意思呢</h4>

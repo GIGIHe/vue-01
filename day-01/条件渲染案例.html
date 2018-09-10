@@ -1,0 +1,19 @@
+<div id="app">
+    <button v-on:click='toggle'>切换显示</button>
+    <!-- 通过控制isShow来控制div的显示与否 v-if控制的DOM节点 v-show控制的是display：none/block-->
+    <div style="background-color: #f2f ;width: 200px; height:100px;" v-show='isShow'></div>
+</div>
+<script src="./vue.js"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            isShow:true
+        },
+        methods:{
+            toggle(){
+                this.isShow=!this.isShow
+            }
+        }
+    })
+</script>
