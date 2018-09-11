@@ -1,0 +1,39 @@
+
+<div id="app">
+    <h3>{{msg}}</h3>
+<my-btn text='toggle' @click.native="toggleClick"></my-btn>
+<my-btn v-bind:text='btnText'></my-btn>
+</div>
+<script src="./vue.js"></script>
+<script>
+    // 声明一个组件
+    const myBtn = {
+//在组件里面写一个props来传值
+props:{
+text:{
+    type:String
+}
+},
+     template:`
+        <button>{{text}}</button>
+        `
+    }
+    // 注册声明的组件
+
+Vue.component('my-btn',myBtn)
+
+
+//实例化一个vue
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            msg:1,
+           btnText:"me"
+        },
+        methods:{
+            toggleClick(){
+                this.btnText="you"
+            }
+        }
+    })
+</script>

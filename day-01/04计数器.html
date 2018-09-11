@@ -1,0 +1,52 @@
+<div id="app">
+    <!-- 错误的用法 -->
+    <!-- <my-container>{{text}}</my-container> -->
+    <!-- 在实例化中的data也是不能用的 -->
+    <!-- <my-container>{{num}}</my-container> -->
+    <my-container></my-container> <my-container></my-container> <my-container></my-container>
+</div>
+<script src="./vue.js"></script>
+<script>
+// const myContainer = {
+//     template:`
+//     <h1>{{text}}</h1>
+//     `,
+//     data(){
+//         return{
+//             text:'组件文字'
+//         }
+//     }
+// }
+const myContainer={
+   data(){
+       return {
+           num : 0
+       }
+   },
+    template:`
+    <div>
+    <button @click="handleAdd">+</button>
+    <strong>{{num}}</strong>
+    <button @click="handleReduce">-</button>
+    </div>
+    `,
+    methods:{
+        handleAdd(){
+            this.num++
+        },
+        handleReduce(){
+            this.num--
+        }
+    }
+}
+
+    const vm = new Vue({
+        el:'#app',
+        // data:{
+        //     num:0
+        // },
+        components:{
+            myContainer
+        }
+    })
+</script>

@@ -1,0 +1,51 @@
+<div id="app">
+    <input type="text" v-model='todo' @keyup.enter='add' placeholder="添加TODO">
+    <h3>doing</h3>
+    <ul>
+        <li v-for='item in arr' v-if='!item.isDone'>
+            <!-- 值是false的才能显示 -->
+            <input type="checkbox" v-model='item.isDone'>
+            <strong> {{item.todo}}</strong>
+        </li>
+    </ul>
+    <h3>done</h3>
+    <ul>
+        <li v-for='item in arr' v-if='item.isDone'>
+            <!-- 完成的才会显示 -->
+            <input type="checkbox" v-model='item.isDone'>
+            <del>{{item.todo}}</del>
+        </li>
+    </ul>
+</div>
+<script src="./vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            arr: [
+                {
+                    todo: 'sleep',
+                    isDone: false
+                },
+                {
+                    todo: 'think',
+                    isDone: false
+                },
+                {
+                    todo: 'work',
+                    isDone: true
+                }
+            ],
+            todo: ''
+        },
+        methods: {
+            add() {
+                this.arr.push({
+                    todo: this.todo,
+                    isDone: false
+                })
+                this.todo = ''
+            }
+        }
+    })
+</script>

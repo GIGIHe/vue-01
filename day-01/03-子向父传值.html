@@ -1,0 +1,83 @@
+<!-- <div id="app">
+    <my-btn text='子组件'></my-btn>
+    <my-btn text ='子向父传值' @toyou='getChild'></my-btn>
+</div>
+<script src="./vue.js"></script> -->
+<!-- <script>
+    // 声明一个组件
+    const myBtn = {
+        props: {
+            text: {
+                type: String
+            }
+        },
+        data() {
+            return {
+                msg: "我是来自子组件的值"
+            }
+        },
+        template: `
+                <div>
+                    <button @click='toFather'>{{text}}</button>
+                </div>
+        `,
+        methods:{
+            toFather(){
+                this.$emit('toyou',this.msg)
+            }
+        }
+    }
+    Vue.component('my-btn', myBtn)
+
+
+    const vm = new Vue({
+        el: '#app',
+        methods:{
+            getChild(msg){
+                console.log(msg)
+            }
+        }
+    })
+</script> -->
+<div id="app">
+        <my-btn text='子组件'></my-btn>
+        <my-btn text ='子向父传值' @toyou='getChild'></my-btn>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+// 声明一个组件
+const myBtn = {
+    // 使用props实现父向子传值
+     props:{
+      text:{
+          type:String
+      }
+     },
+     data(){
+return{
+    msg:'i love you, my father'
+
+}
+     },
+        template: `
+                <div>
+                    <button @click="toFather">{{text}}</button>
+                </div>
+        `,
+        methods:{
+            toFather(){
+                this.$emit('toyou',this.msg)
+            }
+        }
+    }
+    Vue.component('my-btn', myBtn)
+    const vm = new Vue({
+        el: '#app',
+        methods:{
+            getChild(e){
+              console.log(e)
+            }
+        }
+    })
+    
+    </script>

@@ -1,0 +1,81 @@
+
+<style>
+    th,td{
+        border: 1px solid #000000;
+        border-collapse: collapse;
+     }
+</style>
+<div id="app">
+
+    <!-- 学生姓名:<input type="text" v-model='username' @keyup='handleAdd'><button @click='add'>添加</button> -->
+    <!-- 学生姓名:<input type="text" v-model='username' @keyup.13='add'><button @click='add'>添加</button> -->
+    <!-- 学生姓名:<input type="text" v-model='username' @keyup.enter=add><button @click='add'>添加</button> -->
+    输入信息查找:<input type="text" v-model='filterText'>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>入学时间</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for='(item,index) in filter' >
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.data}}</td>
+            <!-- <td><a href="javascript:;"@click='del(index)'>删除</a></td> -->
+        </tr>
+    </table>
+
+</div>
+<script src="./vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            arr: [{
+                    id: 0,
+                    name: 'zhangsan',
+                    data:new Date()
+                },
+                {
+                    id:1,
+                    name: 'lisi',
+                    data:new Date()
+                },
+
+            ],
+        //     username:'',
+            filterText:''
+        },
+        // methods:{
+            // 删除功能
+            // del(index){
+            //     this.arr.splice(index,1)
+            // },
+            // 添加功能
+            // add(){
+            //   this.arr.push({
+            //          id: '',
+            //         name:this.username,
+            //         data:new Date()
+            //   })
+            //   this.username=''
+            // },
+            // 按键输入
+            // handleAdd(e){
+            //     if(e.keyCode===13)
+            //     this.add();
+            // },
+            // 筛选工能
+        // },
+        computed:{
+                filter(){
+             if(!this.filterText){
+                 return this.arr
+             }else{
+                 return this.arr.filter(item=>item.name.indexOf(this.filterText)!=-1)
+             }
+         }  
+            }
+    })
+</script>

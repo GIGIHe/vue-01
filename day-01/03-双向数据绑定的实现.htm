@@ -1,0 +1,56 @@
+<div id="app">
+    <h4>父组件的值是:{{num1}}</h4>
+    <button @click='handleAdd' > ++</button>
+    <my-btn v-bind:my-number='num1' @addparent='handleAdd'></my-btn>
+</div>
+<script src="./vue.js"></script>
+<script>
+     const myBtn={
+         props:{
+           'my-number':{
+               type:Number
+           }
+         },
+         data(){
+             return {
+                number:this.myNumber
+             }     
+         },
+         template:`
+         <div>
+            <button @click='add'>+</button>
+            <strong>{{this.number}}</strong>
+            <button @click='reduce'>-</button>
+            </div>
+         `,
+         methods:{
+            add(){
+                // this.number++;
+                this.$emit('addparent')
+            },
+            reduce(){
+            this.number--
+            }
+         },
+         watch:{
+            myNumber(val){
+                // 将检测到的值给自组件
+                this.number = val
+            }
+}
+     }
+
+Vue.component('my-btn',myBtn)
+
+const vm = new Vue({
+el:'#app',
+data:{
+    num1:10
+},
+methods:{
+    handleAdd(){
+        this.num1++
+    }
+}
+})
+</script>
