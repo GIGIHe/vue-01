@@ -1,0 +1,38 @@
+<div id="app">
+    <son></son>
+    <son @toyou='listen'>{{rainbow}}</son>
+    <h3>{{rainbow}}</h3>
+</div>
+<script src="./vue.js"></script>
+<script>
+    Vue.component("son", {
+        data() {
+            return {
+                say: 'you are my sunshine..'
+            }
+        },
+        template: `
+        <div>
+            <h2 @click='too'>{{this.say}}</h2>
+            </div>
+     `,
+        methods: {
+            too() {
+                this.$emit('toyou', this.say)
+            }
+        }
+    })
+
+    new Vue({
+        data: {
+            rainbow: 'hero'
+        },
+        methods: {
+            listen($say) {
+                this.rainbow = $say
+                console.log($say)
+                console.log(this.rainbow)
+            }
+        }
+    }).$mount('#app')
+</script>
